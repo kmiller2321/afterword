@@ -145,10 +145,14 @@ header.site {
 
 .hero {
   padding: 88px 0 72px;
+}
+
+.hero-grid {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 56px;
   align-items: center;
+}
 }
 
 .hero .eyebrow-free {
@@ -398,7 +402,7 @@ footer.site .muted { font-size: 0.86rem; }
 /* ---------- Responsive ---------- */
 
 @media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; }
+  .hero-grid { grid-template-columns: 1fr; }
   .hero-photo { order: -1; aspect-ratio: 16/9; }
   .reasons, .how, .plans { grid-template-columns: 1fr; }
   .split { grid-template-columns: 1fr; }
