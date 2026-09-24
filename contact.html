@@ -4,13 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Contact — Afterword</title>
-<meta name="description" content="Get in touch to turn a webinar, or a backlog of them, into a polished ebook." />
+<meta name="description" content="Get in touch to turn a webinar, or a backlog of them, into a guide." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Libre+Franklin:wght@700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css" />
 </head>
-<script src="script.js"></script>
 <body>
 
 <header class="site">
@@ -28,7 +27,7 @@
 
   <section style="border-top:none; padding-bottom:24px;">
     <div class="wrap">
-      <h1 style="font-size:clamp(2rem,4vw,2.8rem);">Let's turn a webinar into an ebook</h1>
+      <h1 style="font-size:clamp(2rem,4vw,2.8rem);">Let's turn a webinar into a guide</h1>
       <p class="prose muted" style="font-size:1.1rem; margin-top:14px;">
         Tell me about the webinar — or the backlog — and I'll reply with a sample and a quote.
       </p>
@@ -51,6 +50,14 @@
           <div class="field">
             <label for="email">Work email</label>
             <input type="email" id="email" name="email" required />
+          </div>
+          <div class="field">
+            <label for="webinar-link">Link to your webinar (optional)</label>
+            <input type="url" id="webinar-link" name="webinar-link" placeholder="A recording, replay page, or transcript link" />
+          </div>
+          <div class="field">
+            <label for="brand-link">Your site or style guide (optional)</label>
+            <input type="url" id="brand-link" name="brand-link" placeholder="Helps me match your brand from the start" />
           </div>
           <div class="field">
             <label for="message">What are you working with?</label>
@@ -77,28 +84,29 @@
 
 <footer class="site">
   <div class="wrap" style="display:flex; justify-content:space-between; width:100%; flex-wrap:wrap; gap:12px;">
-    <span class="muted">Afterword — webinar ebooks</span>
+    <span class="muted">Afterword — webinar guides</span>
     <span class="muted">Photography via Unsplash</span>
   </div>
 </footer>
 
 <script>
-  // No backend yet — this opens the visitor's email client with the message
-  // pre-filled. Swap this for Formspree / a serverless function whenever
-  // you want submissions to land somewhere without opening Mail. See README.
   document.getElementById('contact-form').addEventListener('submit', function (e) {
     e.preventDefault();
     var name = document.getElementById('name').value;
     var company = document.getElementById('company').value;
     var email = document.getElementById('email').value;
+    var webinarLink = document.getElementById('webinar-link').value;
+    var brandLink = document.getElementById('brand-link').value;
     var message = document.getElementById('message').value;
 
-    var subject = encodeURIComponent('Webinar ebook inquiry — ' + company);
+    var subject = encodeURIComponent('Webinar guide inquiry — ' + company);
     var body = encodeURIComponent(
       'Name: ' + name + '\n' +
       'Company: ' + company + '\n' +
-      'Email: ' + email + '\n\n' +
-      message
+      'Email: ' + email + '\n' +
+      (webinarLink ? 'Webinar link: ' + webinarLink + '\n' : '') +
+      (brandLink ? 'Site / style guide: ' + brandLink + '\n' : '') +
+      '\n' + message
     );
 
     window.location.href = 'mailto:hello@afterword.example?subject=' + subject + '&body=' + body;
